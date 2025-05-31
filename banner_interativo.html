@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Interativo sobre Resíduos Químicos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .chart-container { position: relative; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; height: 320px; max-height: 400px; }
+        @media (min-width: 768px) { .chart-container { height: 380px; } }
+        .active-nav { color: #2563eb; font-weight: 600; }
+        .active-filter { background-color: #1e40af; color: white; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <span class="text-xl font-bold text-blue-600">🌍 Guia de Resíduos</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#inicio" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600">Início</a>
+                        <a href="#fontes" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600">Fontes</a>
+                        <a href="#impacto" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600">Impacto</a>
+                        <a href="#solucao" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600">Solução</a>
+                        <a href="#acao" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600">Ação</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">Resíduos Químicos: <span class="text-blue-600">O Perigo Invisível</span></h1>
+                <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">Entenda o que são, por que representam um risco e como o descarte correto pode proteger nossa saúde e o planeta. Esta aplicação foi criada para transformar o conhecimento em ação.</p>
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                    <div class="bg-gray-100 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold">⚠️</h3>
+                        <h4 class="mt-2 text-lg font-semibold">O que são?</h4>
+                        <p class="mt-1 text-sm text-gray-600">Substâncias que, por suas propriedades (inflamáveis, tóxicas, etc.), oferecem risco à saúde e ao meio ambiente.</p>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold">❤️</h3>
+                        <h4 class="mt-2 text-lg font-semibold">Por que se importar?</h4>
+                        <p class="mt-1 text-sm text-gray-600">O descarte incorreto causa doenças graves, como câncer e problemas neurológicos, e contamina nossos recursos naturais.</p>
+                    </div>
+                     <div class="bg-gray-100 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold">🌱</h3>
+                        <h4 class="mt-2 text-lg font-semibold">Qual a solução?</h4>
+                        <p class="mt-1 text-sm text-gray-600">Segregação na fonte, armazenamento seguro e descarte em locais apropriados. A conscientização é o primeiro passo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="fontes" class="py-16 md:py-24">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-gray-900">De Onde Vêm os Resíduos Químicos?</h2>
+                <p class="mt-3 text-center max-w-2xl mx-auto text-gray-600">Eles estão mais perto do que você imagina. O descarte inadequado começa em ambientes cotidianos. Clique nos cartões para descobrir fontes comuns de resíduos químicos.</p>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="source-card bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+                        <h3 class="text-xl font-semibold text-blue-700">🏠 Em Casa</h3>
+                        <ul class="info-list hidden mt-4 space-y-2 text-sm text-gray-700">
+                            <li>› Pilhas e baterias</li>
+                            <li>› Medicamentos vencidos</li>
+                            <li>› Tintas e solventes</li>
+                            <li>› Produtos de limpeza fortes</li>
+                            <li>› Óleo de cozinha usado</li>
+                        </ul>
+                    </div>
+                    <div class="source-card bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+                        <h3 class="text-xl font-semibold text-green-700">🏫 Na Escola</h3>
+                        <ul class="info-list hidden mt-4 space-y-2 text-sm text-gray-700">
+                            <li>› Reagentes de laboratório</li>
+                            <li>› Materiais de limpeza</li>
+                            <li>› Cartuchos de impressora</li>
+                            <li>› Lâmpadas fluorescentes</li>
+                            <li>› Equipamentos eletrônicos</li>
+                        </ul>
+                    </div>
+                    <div class="source-card bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+                        <h3 class="text-xl font-semibold text-yellow-700">🌆 Na Comunidade</h3>
+                        <ul class="info-list hidden mt-4 space-y-2 text-sm text-gray-700">
+                            <li>› Lixo eletrônico</li>
+                            <li>› Efluentes industriais</li>
+                            <li>› Agrotóxicos na agricultura</li>
+                            <li>› Baterias de veículos</li>
+                            <li>› Resíduos hospitalares</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="impacto" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-gray-900">Impactos na Saúde e no Ambiente</h2>
+                <p class="mt-3 text-center max-w-2xl mx-auto text-gray-600">O descarte inadequado deixa um rastro de destruição. Explore os dados sobre os efeitos na saúde humana e veja os danos causados ao nosso ecossistema. Use os botões para filtrar os dados do gráfico.</p>
+                
+                <div class="mt-12">
+                    <h3 class="text-2xl font-semibold text-center mb-4">Riscos para a Saúde Humana</h3>
+                    <div class="flex justify-center space-x-2 mb-6">
+                        <button class="chart-filter-btn active-filter px-4 py-2 text-sm font-medium rounded-full transition" data-filter="doencas_cardiacas">Cardíacas</button>
+                        <button class="chart-filter-btn px-4 py-2 text-sm font-medium rounded-full transition" data-filter="cancer">Câncer</button>
+                        <button class="chart-filter-btn px-4 py-2 text-sm font-medium rounded-full transition" data-filter="outros">Outros Riscos</button>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="healthImpactChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="mt-16">
+                    <h3 class="text-2xl font-semibold text-center mb-8">Danos ao Meio Ambiente</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                        <div class="p-6">
+                            <span class="text-4xl">💧</span>
+                            <h4 class="mt-4 text-lg font-bold">Poluição da Água</h4>
+                            <p class="mt-2 text-sm text-gray-600">Contamina rios, lagos e águas subterrâneas, tornando a água imprópria para consumo e destruindo a vida aquática.</p>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-4xl">🌱</span>
+                            <h4 class="mt-4 text-lg font-bold">Degradação do Solo</h4>
+                            <p class="mt-2 text-sm text-gray-600">Substâncias tóxicas acumulam-se no solo, reduzindo a fertilidade, matando microrganismos e entrando na cadeia alimentar.</p>
+                        </div>
+                        <div class="p-6">
+                             <span class="text-4xl">💨</span>
+                            <h4 class="mt-4 text-lg font-bold">Poluição do Ar</h4>
+                            <p class="mt-2 text-sm text-gray-600">A queima ou evaporação de químicos libera gases tóxicos que causam doenças respiratórias e contribuem para a chuva ácida.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solucao" class="py-16 md:py-24">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-gray-900">Como Fazer o Descarte Correto?</h2>
+                <p class="mt-3 text-center max-w-2xl mx-auto text-gray-600">A gestão segura de resíduos químicos segue um processo claro e fundamental. Clique em cada etapa para entender sua importância e como aplicá-la.</p>
+                <div class="mt-12 flex flex-col md:flex-row items-start gap-8">
+                    <div class="w-full md:w-1/3">
+                        <div class="space-y-4">
+                            <div class="solution-step p-4 rounded-lg cursor-pointer bg-blue-100 border-l-4 border-blue-500" data-step="1">
+                                <h4 class="font-bold">1. Segregação na Fonte</h4>
+                                <p class="text-sm">Separar os resíduos no momento e local em que são gerados.</p>
+                            </div>
+                            <div class="solution-step p-4 rounded-lg cursor-pointer bg-gray-100 border-l-4 border-gray-400" data-step="2">
+                                <h4 class="font-bold">2. Acondicionamento</h4>
+                                <p class="text-sm">Armazenar em recipientes corretos e seguros.</p>
+                            </div>
+                             <div class="solution-step p-4 rounded-lg cursor-pointer bg-gray-100 border-l-4 border-gray-400" data-step="3">
+                                <h4 class="font-bold">3. Identificação</h4>
+                                <p class="text-sm">Etiquetar cada recipiente com informações claras sobre o conteúdo.</p>
+                            </div>
+                            <div class="solution-step p-4 rounded-lg cursor-pointer bg-gray-100 border-l-4 border-gray-400" data-step="4">
+                                <h4 class="font-bold">4. Descarte Especializado</h4>
+                                <p class="text-sm">Encaminhar para a coleta e tratamento adequados.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="solution-details" class="w-full md:w-2/3 bg-white p-6 rounded-lg shadow-md">
+                        <h4 id="solution-title" class="text-xl font-bold mb-2"></h4>
+                        <p id="solution-text" class="text-gray-700"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="acao" class="py-16 md:py-24 bg-blue-600 text-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold">Sua Ação Faz a Diferença!</h2>
+                <p class="mt-3 max-w-2xl mx-auto">Pequenas atitudes no dia a dia podem ter um grande impacto positivo. Comece hoje mesmo.</p>
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-blue-900">
+                    <div class="bg-white p-6 rounded-lg">
+                        <h3 class="text-lg font-semibold">Informe-se</h3>
+                        <p class="mt-2 text-sm">Leia os rótulos dos produtos e procure pontos de coleta seletiva na sua cidade para itens como pilhas, óleos e eletrônicos.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg">
+                        <h3 class="text-lg font-semibold">Reduza o Consumo</h3>
+                        <p class="mt-2 text-sm">Opte por produtos menos tóxicos e biodegradáveis. Planeje compras para evitar o vencimento de produtos químicos.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg">
+                        <h3 class="text-lg font-semibold">Compartilhe</h3>
+                        <p class="mt-2 text-sm">Converse com sua família e amigos. A conscientização coletiva é a nossa maior ferramenta para a mudança.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center text-sm">
+            <p>Aplicação desenvolvida para apresentação escolar sobre resíduos químicos.</p>
+            <p class="mt-1">Conteúdo baseado no Guia para Criação de Banner Educacional. Maio, 2025.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const chartData = {
+                doencas_cardiacas: {
+                    labels: ['Doença Cardíaca Isquêmica', 'AVC (Derrame)'],
+                    data: [35, 42],
+                    backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                    title: '% de casos que podem ser prevenidos com a redução da exposição química'
+                },
+                cancer: {
+                    labels: ['Câncer Ocupacional (todos)', 'Câncer de Pulmão (poluição ar)'],
+                    data: [8, 14],
+                    backgroundColor: 'rgba(239, 68, 68, 0.7)',
+                    title: '% de casos de câncer atribuíveis a exposições químicas'
+                },
+                outros: {
+                    labels: ['Suicídios (por agrotóxicos)', 'Países com Centro de Intoxicação'],
+                    data: [20, 47],
+                    backgroundColor: 'rgba(245, 158, 11, 0.7)',
+                    title: 'Outros dados de risco e prevenção (%)'
+                }
+            };
+
+            const ctx = document.getElementById('healthImpactChart').getContext('2d');
+            let healthChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: chartData.doencas_cardiacas.labels,
+                    datasets: [{
+                        label: '% de Casos Preveníveis',
+                        data: chartData.doencas_cardiacas.data,
+                        backgroundColor: chartData.doencas_cardiacas.backgroundColor,
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 50
+                        },
+                        x: {
+                            ticks: {
+                                callback: function(value) {
+                                    const label = this.getLabelForValue(value);
+                                    if (label.length > 16) {
+                                        return label.split(' ');
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: chartData.doencas_cardiacas.title
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${context.raw}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            document.querySelectorAll('.chart-filter-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const filter = e.target.dataset.filter;
+                    const newChartData = chartData[filter];
+                    
+                    healthChart.data.labels = newChartData.labels;
+                    healthChart.data.datasets[0].data = newChartData.data;
+                    healthChart.data.datasets[0].backgroundColor = newChartData.backgroundColor;
+                    healthChart.options.plugins.title.text = newChartData.title;
+                    
+                    let maxVal = Math.max(...newChartData.data);
+                    healthChart.options.scales.y.max = Math.ceil(maxVal / 10) * 10 + 10;
+                    
+                    healthChart.update();
+
+                    document.querySelectorAll('.chart-filter-btn').forEach(btn => btn.classList.remove('active-filter'));
+                    e.target.classList.add('active-filter');
+                });
+            });
+
+            document.querySelectorAll('.source-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const infoList = card.querySelector('.info-list');
+                    infoList.classList.toggle('hidden');
+                });
+            });
+
+            const solutionSteps = {
+                1: {
+                    title: '1. Segregação na Fonte',
+                    text: 'Este é o passo mais crucial. Significa separar os resíduos químicos de outros tipos de lixo (como orgânico e reciclável) no exato momento em que são gerados. Também é vital não misturar produtos químicos incompatíveis, pois podem reagir de forma perigosa. A segregação correta evita a contaminação e facilita todo o processo de tratamento e descarte seguro.'
+                },
+                2: {
+                    title: '2. Acondicionamento',
+                    text: 'Após a separação, cada tipo de resíduo deve ser guardado em um recipiente apropriado e seguro. Líquidos em bombonas, sólidos em caixas específicas, e perfurocortantes em coletores rígidos. Os recipientes devem ser resistentes, compatíveis com o produto químico e preenchidos até no máximo 2/3 de sua capacidade para evitar vazamentos.'
+                },
+                3: {
+                    title: '3. Identificação',
+                    text: 'Todo recipiente com resíduo químico deve ser claramente identificado com uma etiqueta. A etiqueta deve informar o nome do resíduo, suas características de periculosidade (tóxico, inflamável, etc.) e a data da geração. Essa identificação é essencial para o manuseio seguro por parte das equipes de coleta e tratamento.'
+                },
+                4: {
+                    title: '4. Descarte Especializado',
+                    text: 'Resíduos químicos não podem ser descartados no lixo comum ou no esgoto. Eles devem ser encaminhados para empresas especializadas ou pontos de coleta designados que realizarão o tratamento adequado, como incineração, neutralização ou recuperação, garantindo que não prejudiquem o meio ambiente ou a saúde pública.'
+                }
+            };
+
+            const solutionTitleEl = document.getElementById('solution-title');
+            const solutionTextEl = document.getElementById('solution-text');
+            const solutionStepButtons = document.querySelectorAll('.solution-step');
+            
+            function updateSolutionDetails(step) {
+                const details = solutionSteps[step];
+                solutionTitleEl.textContent = details.title;
+                solutionTextEl.textContent = details.text;
+                
+                solutionStepButtons.forEach(button => {
+                    if (button.dataset.step === step) {
+                        button.classList.remove('bg-gray-100', 'border-gray-400');
+                        button.classList.add('bg-blue-100', 'border-blue-500');
+                    } else {
+                        button.classList.remove('bg-blue-100', 'border-blue-500');
+                        button.classList.add('bg-gray-100', 'border-gray-400');
+                    }
+                });
+            }
+            
+            updateSolutionDetails('1'); 
+            
+            solutionStepButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    updateSolutionDetails(button.dataset.step);
+                });
+            });
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('main section');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 80) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active-nav');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active-nav');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
